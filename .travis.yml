@@ -1,0 +1,16 @@
+script:
+  - mkdir "${TRAVIS_BUILD_DIR}/gh-pages"
+  - echo "test" > "${TRAVIS_BUILD_DIR}/gh-pages/index.html"
+
+deploy:
+  github-token: $GITHUB_TOKEN
+  provider: pages
+  edge:
+    source: brianhou/dpl
+    branch: master
+  on:
+    branch: master
+  skip-cleanup: true
+  local-dir: gh-pages
+  keep-history: false
+  verbose: true
