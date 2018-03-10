@@ -11,6 +11,6 @@ deploy:
   on:
     branch: master
   skip-cleanup: true
-  local-dir: "${TRAVIS_BUILD_DIR}/gh-pages"
+  local-dir: gh-pages
   keep-history: false
   verbose: true
