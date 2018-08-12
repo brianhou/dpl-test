@@ -3,14 +3,17 @@ script:
   - echo "dpl-test" > "${TRAVIS_BUILD_DIR}/gh-pages/index.html"
 
 deploy:
-  github-token: $GITHUB_TOKEN
-  provider: pages
-  edge:
-    source: brianhou/dpl
-    branch: master
-  on:
-    branch: master
-  skip-cleanup: true
-  local-dir: gh-pages
-  keep-history: false
-  verbose: true
+  - &_base_provider
+    github-token: $GITHUB_TOKEN
+    provider: pages
+    edge:
+      source: brianhou/dpl
+      branch: master
+    on:
+      branch: master
+    skip-cleanup: true
+    local-dir: gh-pages
+    keep-history: false
+    verbose: true
+  - <<: *_base_provider
+    local-dir: "${TRAVIS_BUILD_DIR}/gh-pages"
